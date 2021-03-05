@@ -1,0 +1,11 @@
+weblogic:
+  image: ismaleiva90/weblogic12:latest
+  container_name: "weblogic"
+  restart: always
+  environment:
+    JAVA_TOOL_OPTIONS: -agentlib:jdwp=transport=dt_socket,address=8453,server=y,suspend=n
+  ports:
+    - 7001:7001
+    - 7002:7002
+    - 5556:5556
+    - 8453:8453
