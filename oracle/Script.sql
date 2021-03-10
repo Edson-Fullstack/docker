@@ -1,0 +1,7 @@
+alter session set "_ORACLE_SCRIPT"=true;  
+
+CREATE USER edson IDENTIFIED BY edson;
+
+ALTER USER sys QUOTA 100M ON *;
+
+GRANT UNLIMITED TABLESPACE TO SYS;

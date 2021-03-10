@@ -1,0 +1,22 @@
+#docker-compose -f 2-minio.yml up --detach
+version: '2'
+
+services:
+  minio1:
+    image: 'minio/minio'
+    container_name: 'minio1'
+    hostname: my-minio
+    ports:
+      - '9000:9000'
+    expose: 
+      - 9000
+    environment:
+      - MINIO_ACCESS_KEY=min
+      - MINIO_SECRET_KEY=min10
+    command: server /data
+    networks:
+      - gtpNetwork
+networks:
+  gtpNetwork:
+    driver: bridge
+

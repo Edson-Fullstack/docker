@@ -1,0 +1,26 @@
+#docker-compose -f 0-mongo.yml up --detach
+version: '3.1'
+
+services:
+
+  mongo:
+    image: mongo:4.0-xenial
+    container_name: "mongo"
+    hostname: mongo
+    ports: 
+    - 27017:27017
+    expose: 
+    - 27017
+    environment:
+      - AUTH=yes
+      - MONGODB_ADMIN_USER=admin
+      - MONGODB_ADMIN_PASS=admin
+      - MONGODB_APPLICATION_DATABASE=database
+      - MONGODB_APPLICATION_USER=root
+      - MONGODB_APPLICATION_PASS=pass
+    volumes: 
+      - type: bind
+        source: .
+        target: /app
+        read_only: true
+

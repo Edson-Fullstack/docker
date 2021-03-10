@@ -1,0 +1,25 @@
+#docker-compose -f 3-rabitMQ.yml up --detach
+version: "3"
+
+services:
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: some-rabbit
+    hostname: my-rabbit
+    command: rabbitmq-server
+    ports:
+      - 5672:5672
+      - 15672:15672
+    expose:
+      - "5672"
+      - "15672"
+    environment:
+      - RABBITMQ_DEFAULT_USER=rabbit
+      - RABBITMQ_DEFAULT_PASS=rabbitMQ
+    networks:
+      - gtpNetwork
+
+networks:
+  gtpNetwork:
+    driver: bridge
